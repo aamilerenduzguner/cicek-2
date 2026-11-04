@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moral Çiçeği</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -602,12 +602,11 @@
 
                 heartsLayer.appendChild(heartWrapper);
 
-                // Animasyon bittiğinde DOM'dan temizle
-                setTimeout(() => {
-                    if (heartWrapper.parentNode) {
-                        heartWrapper.remove();
-                    }
-                }, duration * 1000 + 200);
+                // Animasyon gerçekten tamamlandığında kalbi DOM'dan kaldır.
+                // Negatif animation-delay ile başlayan kalpler de doğru zamanda temizlenir.
+                heartWrapper.addEventListener('animationend', () => {
+                    heartWrapper.remove();
+                }, { once: true });
             }
 
             // Açılışta ekranda hemen kalpler görünsün
