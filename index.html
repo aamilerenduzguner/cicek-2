@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Moral Çiçeği</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100dvh;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 50% 20%, #1e1b4b 0%, #0f172a 55%, #050811 100%);
+            font-family: 'Nunito', sans-serif;
+            position: relative;
+        }
+
+        /* Gece Gökyüzü Yıldızları */
+        .stars-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--twinkle-duration, 3s) ease-in-out infinite alternate;
+            opacity: 0.3;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.15; transform: scale(0.8); }
+            100% { opacity: 0.9; transform: scale(1.25); box-shadow: 0 0 6px #fff; }
+        }
+
+        /* Yukarıdan Aşağıya Yağan Minik Kırmızı Kalpler */
+        #hearts-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 30;
+            overflow: hidden;
+        }
+
+        .falling-heart {
+            position: absolute;
+            top: -40px;
+            pointer-events: none;
+            animation: fallDown var(--fall-duration, 5s) linear forwards;
+            filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.55));
+            will-change: transform, opacity;
+        }
+
+        @keyframes fallDown {
+            0% {
+                transform: translateY(-5vh) translateX(0px) rotate(0deg) scale(var(--heart-scale, 1));
+                opacity: 0;
+            }
+            10% {
+                opacity: var(--heart-opacity, 0.9);
+            }
+            50% {
+                transform: translateY(50vh) translateX(var(--sway-mid, 18px)) rotate(var(--rot-mid, 20deg)) scale(var(--heart-scale, 1));
+            }
+            90% {
+                opacity: var(--heart-opacity, 0.9);
+            }
+            100% {
+                transform: translateY(108vh) translateX(var(--sway-end, -15px)) rotate(var(--rot-end, -25deg)) scale(var(--heart-scale, 1));
+                opacity: 0;
+            }
+        }
+
+        /* En Üstten Sayfanın Ortasına İnen Yazı Animasyonu */
+        .descending-message-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 92%;
+            max-width: 390px;
+            z-index: 40;
+            transform: translate(-50%, -150%);
+            animation: descendToCenter 2.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+        }
+
+        /* Telefon ekranlarında tam ortaya (buketin hemen üst-orta hizasına) iniş */
+        @keyframes descendToCenter {
+            0% {
+                transform: translate(-50%, -140%) scale(0.9);
+                opacity: 0;
+            }
+            65% {
+                transform: translate(-50%, calc(42dvh - 50%)) scale(1.02);
+                opacity: 1;
+            }
+            82% {
+                transform: translate(-50%, calc(39.5dvh - 50%)) scale(0.99);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, calc(41dvh - 50%)) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message-card {
+            background: rgba(15, 23, 42, 0.68);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), 0 0 25px rgba(244, 63, 94, 0.22);
+            border-radius: 22px;
+            padding: 16px 20px;
+            text-align: center;
+            animation: gentleFloat 4s ease-in-out 3.3s infinite alternate;
+        }
+
+        @keyframes gentleFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-7px); }
+        }
+
+        .main-script-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.55rem, 6.2vw, 2.05rem);
+            line-height: 1.25;
+            background: linear-gradient(135deg, #fff1f2 0%, #fecdd3 50%, #fde047 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 12px rgba(251, 113, 133, 0.3);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .sub-note-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(0.85rem, 3.6vw, 0.98rem);
+            color: #fda4af;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            display: block;
+            opacity: 0.95;
+        }
+
+        /* Buket Alanı */
+        .bouquet-stage {
+            position: absolute;
+            bottom: 2dvh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(96vw, 430px);
+            height: min(64dvh, 520px);
+            z-index: 20;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .bouquet-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+        }
+
+        /* Sapların Çizim Animasyonu */
+        .stem-path {
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation: growStem 1.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+        }
+
+        @keyframes growStem {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Yaprakların Açılış Animasyonu */
+        .leaf-item {
+            transform-box: fill-box;
+            transform-origin: bottom center;
+            transform: scale(0);
+            animation: popLeaf 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes popLeaf {
+            to { transform: scale(1); }
+        }
+
+        /* Papatyaların Açılış ve Salınım Animasyonu */
+        .daisy-flower {
+            transform-box: fill-box;
+            transform-origin: center center;
+            opacity: 0;
+            transform: scale(0) rotate(-25deg);
+            animation:
+                bloomDaisy 0.95s cubic-bezier(0.34, 1.56, 0.64, 1) var(--bloom-delay, 1s) forwards,
+                swayDaisy var(--sway-speed, 4s) ease-in-out calc(var(--bloom-delay, 1s) + 0.95s) infinite alternate;
+            cursor: pointer;
+        }
+
+        @keyframes bloomDaisy {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(-25deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes swayDaisy {
+            0% { transform: scale(1) rotate(-4deg) translateY(0px); }
+            100% { transform: scale(1.03) rotate(4deg) translateY(-3px); }
+        }
+
+        /* Kurdele Animasyonu */
+        .ribbon-group {
+            transform-box: fill-box;
+            transform-origin: center center;
+            opacity: 0;
+            transform: scale(0.3);
+            animation: tieRibbon 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
+            cursor: pointer;
+        }
+
+        @keyframes tieRibbon {
+            0% { opacity: 0; transform: scale(0.3); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Buket Arkası Romantik Parıltı */
+        .ambient-glow {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.22) 0%, rgba(250, 204, 21, 0.12) 45%, transparent 70%);
+            border-radius: 50%;
+            top: 42%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(20px);
+            pointer-events: none;
+            z-index: 5;
+            animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.75; }
+            100% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+        }
+
+        /* Dokunulduğunda Çıkan Kalp Efekti */
+        .touch-burst-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            animation: burstOut 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                transform: translate(-50%, -50%) scale(0.4);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.2) rotate(var(--trot));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gece Yıldızları Katmanı -->
+    <div id="stars-layer" class="stars-container"></div>
+
+    <!-- Romantik Arka Plan Işıltısı -->
+    <div class="ambient-glow"></div>
+
+    <!-- En Üstten Aşağıya Yağan Minik Kırmızı Kalpler Katmanı -->
+    <div id="hearts-layer"></div>
+
+    <!-- En Üstten Sayfanın Ortasına İnen Yazı -->
+    <div class="descending-message-wrapper" id="message-box">
+        <div class="message-card">
+            <p class="leading-relaxed">
+                <span class="main-script-text">bu sınavların için moral çiçeğidir</span>
+                <span class="sub-note-text">(çok hızlı kodladım istediğim gibi olmadı)</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Sarı, Kırmızı ve Beyaz Papatya Buketi -->
+    <div class="bouquet-stage">
+        <svg class="bouquet-svg" viewBox="0 0 400 490" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Saplar İçin Yeşil Ton Geçişi -->
+                <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#4ade80" />
+                    <stop offset="65%" stop-color="#16a34a" />
+                    <stop offset="100%" stop-color="#14532d" />
+                </linearGradient>
+
+                <!-- Yapraklar İçin Yeşil Ton Geçişi -->
+                <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#4ade80" />
+                    <stop offset="100%" stop-color="#15803d" />
+                </linearGradient>
+
+                <!-- Papatya Göbekleri İçin Altın Sarısı Geçiş -->
+                <radialGradient id="centerGold" cx="50%" cy="45%" r="55%">
+                    <stop offset="0%" stop-color="#fef08a" />
+                    <stop offset="55%" stop-color="#f59e0b" />
+                    <stop offset="100%" stop-color="#b45309" />
+                </radialGradient>
+
+                <!-- Beyaz Papatya Yaprağı -->
+                <linearGradient id="whitePetal" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="80%" stop-color="#f1f5f9" />
+                    <stop offset="100%" stop-color="#cbd5e1" />
+                </linearGradient>
+
+                <!-- Sarı Papatya Yaprağı -->
+                <linearGradient id="yellowPetal" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fef08a" />
+                    <stop offset="65%" stop-color="#facc15" />
+                    <stop offset="100%" stop-color="#eab308" />
+                </linearGradient>
+
+                <!-- Kırmızı Papatya Yaprağı -->
+                <linearGradient id="redPetal" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fb7185" />
+                    <stop offset="55%" stop-color="#e11d48" />
+                    <stop offset="100%" stop-color="#9f1239" />
+                </linearGradient>
+
+                <!-- Kurdele İçin Kırmızı Saten Geçişi -->
+                <linearGradient id="ribbonGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#fb7185" />
+                    <stop offset="45%" stop-color="#e11d48" />
+                    <stop offset="100%" stop-color="#881337" />
+                </linearGradient>
+
+                <linearGradient id="ribbonDarkGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#9f1239" />
+                    <stop offset="100%" stop-color="#4c0519" />
+                </linearGradient>
+            </defs>
+
+            <!-- Buket Arka Tül/Sargı Silüeti -->
+            <path d="M95 230 Q200 180 305 230 L222 382 Q200 392 178 382 Z"
+                  fill="rgba(255, 255, 255, 0.05)"
+                  stroke="rgba(255, 255, 255, 0.12)"
+                  stroke-width="1.2" />
+
+            <!-- ================= ARKA YAPRAKLAR ================= -->
+            <g class="leaf-item" style="animation-delay: 0.7s;">
+                <path d="M185 350 Q120 310 95 260 Q145 275 188 340 Z" fill="url(#leafGrad)" opacity="0.85" />
+                <path d="M215 350 Q280 310 305 260 Q255 275 212 340 Z" fill="url(#leafGrad)" opacity="0.85" />
+                <path d="M192 330 Q140 260 130 205 Q170 245 196 320 Z" fill="url(#leafGrad)" opacity="0.7" />
+                <path d="M208 330 Q260 260 270 205 Q230 245 204 320 Z" fill="url(#leafGrad)" opacity="0.7" />
+            </g>
+
+            <!-- ================= ÇİÇEK SAPLARI (KURDELEDE BİRLEŞEN) ================= -->
+            <!-- Tüm saplar (200, 380) noktasındaki kurdele boğumunda birleşip aşağıya uzanır -->
+            <g stroke="url(#stemGrad)" stroke-linecap="round" fill="none">
+                <!-- Sol alt saplar -->
+                <path class="stem-path" d="M92 228 Q138 300 200 380 Q218 415 234 456" stroke-width="5.5" style="animation-delay: 0.1s;" />
+                <path class="stem-path" d="M118 168 Q154 275 200 380 Q210 418 220 462" stroke-width="5.5" style="animation-delay: 0.18s;" />
+                <!-- Sol orta-üst saplar -->
+                <path class="stem-path" d="M158 122 Q176 250 200 380 Q204 420 207 466" stroke-width="6" style="animation-delay: 0.25s;" />
+                <path class="stem-path" d="M148 238 Q172 312 200 380 Q196 420 192 465" stroke-width="5.5" style="animation-delay: 0.3s;" />
+                <!-- Merkez saplar -->
+                <path class="stem-path" d="M200 105 Q200 245 200 380 Q200 422 200 468" stroke-width="6.5" style="animation-delay: 0.15s;" />
+                <path class="stem-path" d="M200 185 Q200 285 200 380 Q189 420 180 464" stroke-width="6" style="animation-delay: 0.35s;" />
+                <path class="stem-path" d="M200 262 Q200 322 200 380 Q212 420 225 460" stroke-width="5.5" style="animation-delay: 0.4s;" />
+                <!-- Sağ orta-üst saplar -->
+                <path class="stem-path" d="M242 122 Q224 250 200 380 Q184 420 172 462" stroke-width="6" style="animation-delay: 0.22s;" />
+                <path class="stem-path" d="M252 238 Q228 312 200 380 Q178 418 166 456" stroke-width="5.5" style="animation-delay: 0.32s;" />
+                <!-- Sağ alt saplar -->
+                <path class="stem-path" d="M282 168 Q246 275 200 380 Q192 420 186 465" stroke-width="5.5" style="animation-delay: 0.2s;" />
+                <path class="stem-path" d="M308 228 Q262 300 200 380 Q175 415 158 452" stroke-width="5.5" style="animation-delay: 0.12s;" />
+            </g>
+
+            <!-- ================= ÖN ARA YAPRAKLAR ================= -->
+            <g class="leaf-item" style="animation-delay: 0.95s;">
+                <path d="M168 310 Q125 285 112 252 Q152 265 174 302 Z" fill="url(#leafGrad)" />
+                <path d="M232 310 Q275 285 288 252 Q248 265 226 302 Z" fill="url(#leafGrad)" />
+                <path d="M188 345 Q155 325 142 298 Q175 310 192 338 Z" fill="url(#leafGrad)" />
+                <path d="M212 345 Q245 325 258 298 Q225 310 208 338 Z" fill="url(#leafGrad)" />
+            </g>
+
+            <!-- ================= PAPATYA ÇİÇEKLERİ (SARI, KIRMIZI, BEYAZ) ================= -->
+            <!-- JavaScript ile 11 adet zengin detaylı papatya buraya yerleştirilir -->
+            <g id="daisies-container"></g>
+
+            <!-- ================= ALT TARAFTA SAPLARI BİRLEŞTİREN KURDELE ================= -->
+            <g class="ribbon-group" id="bouquet-ribbon" transform="translate(200, 380)">
+                <!-- Kurdele Arka Gölgeleri -->
+                <ellipse cx="0" cy="4" rx="28" ry="12" fill="rgba(0,0,0,0.35)" />
+
+                <!-- Kurdele Aşağı Sallanan Uçları -->
+                <path d="M-10 6 Q-28 45 -48 82 L-26 76 L-18 90 Q-6 48 -2 8 Z"
+                      fill="url(#ribbonGrad)" stroke="#fda4af" stroke-width="0.6" />
+                <path d="M10 6 Q28 45 48 82 L26 76 L18 90 Q6 48 2 8 Z"
+                      fill="url(#ribbonGrad)" stroke="#fda4af" stroke-width="0.6" />
+
+                <!-- Kurdele Fiyonk İç Gölgeleri -->
+                <path d="M-8 0 C-38 -18 -64 -8 -56 10 C-48 22 -22 14 -8 4 Z" fill="url(#ribbonDarkGrad)" />
+                <path d="M8 0 C38 -18 64 -8 56 10 C48 22 22 14 8 4 Z" fill="url(#ribbonDarkGrad)" />
+
+                <!-- Sol Fiyonk Kanadı -->
+                <path d="M-6 -4 C-38 -32 -74 -14 -64 10 C-54 32 -22 18 -6 5 Z"
+                      fill="url(#ribbonGrad)" stroke="#fecdd3" stroke-width="0.8" />
+                <!-- Sol Fiyonk Kıvrım Çizgisi -->
+                <path d="M-14 -1 C-32 -12 -48 -6 -46 4" stroke="rgba(255,255,255,0.35)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+
+                <!-- Sağ Fiyonk Kanadı -->
+                <path d="M6 -4 C38 -32 74 -14 64 10 C54 32 22 18 6 5 Z"
+                      fill="url(#ribbonGrad)" stroke="#fecdd3" stroke-width="0.8" />
+                <!-- Sağ Fiyonk Kıvrım Çizgisi -->
+                <path d="M14 -1 C32 -12 48 -6 46 4" stroke="rgba(255,255,255,0.35)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+
+                <!-- SaplarıSaran Orta Bağ ve Düğüm -->
+                <rect x="-13" y="-9" width="26" height="19" rx="8"
+                      fill="url(#ribbonGrad)" stroke="#ffe4e6" stroke-width="1" />
+                <path d="M-8 -5 Q0 -8 8 -5" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round" />
+            </g>
+        </svg>
+    </div>
+
+    <script>
+        /**
+         * 1. Sarı, Kırmızı ve Beyaz Papatyaları Oluşturma
+         */
+        function renderBouquetDaisies() {
+            const container = document.getElementById('daisies-container');
+
+            // Buket içerisindeki papatyaların konumları, renkleri ve boyutları
+            // (Arka sıradan ön sıraya doğru katmanlı dizilim)
+            const daisiesData = [
+                // Üst & Arka Sıra
+                { x: 158, y: 122, color: 'white',  scale: 0.92, delay: '0.85s', sway: '3.8s' },
+                { x: 242, y: 122, color: 'yellow', scale: 0.92, delay: '0.92s', sway: '4.2s' },
+                { x: 200, y: 105, color: 'red',    scale: 1.02, delay: '0.78s', sway: '4.0s' },
+
+                // Orta Sıra
+                { x: 118, y: 168, color: 'yellow', scale: 0.95, delay: '1.00s', sway: '3.6s' },
+                { x: 282, y: 168, color: 'white',  scale: 0.95, delay: '1.06s', sway: '4.4s' },
+                { x: 200, y: 178, color: 'white',  scale: 1.08, delay: '1.12s', sway: '3.9s' },
+
+                // Alt-Orta & Yan Sıra
+                { x: 92,  y: 228, color: 'red',    scale: 0.90, delay: '1.18s', sway: '4.1s' },
+                { x: 308, y: 228, color: 'red',    scale: 0.90, delay: '1.22s', sway: '3.7s' },
+                { x: 148, y: 236, color: 'red',    scale: 1.04, delay: '1.28s', sway: '4.3s' },
+                { x: 252, y: 236, color: 'yellow', scale: 1.04, delay: '1.34s', sway: '3.8s' },
+
+                // Ön Merkez Odak Papatyası
+                { x: 200, y: 262, color: 'yellow', scale: 1.12, delay: '1.42s', sway: '4.0s' }
+            ];
+
+            const petalGradientMap = {
+                white: 'url(#whitePetal)',
+                yellow: 'url(#yellowPetal)',
+                red: 'url(#redPetal)'
+            };
+
+            const petalStrokeMap = {
+                white: '#e2e8f0',
+                yellow: '#fde047',
+                red: '#fda4af'
+            };
+
+            const svgNS = 'http://www.w3.org/2000/svg';
+
+            daisiesData.forEach((flower) => {
+                const outerG = document.createElementNS(svgNS, 'g');
+                outerG.setAttribute('transform', `translate(${flower.x}, ${flower.y})`);
+
+                const animG = document.createElementNS(svgNS, 'g');
+                animG.setAttribute('class', 'daisy-flower');
+                animG.style.setProperty('--bloom-delay', flower.delay);
+                animG.style.setProperty('--sway-speed', flower.sway);
+
+                const scaleG = document.createElementNS(svgNS, 'g');
+                scaleG.setAttribute('transform', `scale(${flower.scale})`);
+
+                // 14 adet papatya taç yaprağı (çift katmanlı doğal görünüm)
+                const numPetals = 14;
+                for (let i = 0; i < numPetals; i++) {
+                    const angle = (360 / numPetals) * i;
+                    const petal = document.createElementNS(svgNS, 'path');
+                    // Papatya yaprağı formu
+                    petal.setAttribute('d', 'M 0 -6 C -6.5 -18, -7.5 -34, 0 -39 C 7.5 -34, 6.5 -18, 0 -6 Z');
+                    petal.setAttribute('fill', petalGradientMap[flower.color]);
+                    petal.setAttribute('stroke', petalStrokeMap[flower.color]);
+                    petal.setAttribute('stroke-width', '0.5');
+                    petal.setAttribute('transform', `rotate(${angle})`);
+                    scaleG.appendChild(petal);
+                }
+
+                // Papatya göbek halkası gölgesi
+                const centerShadow = document.createElementNS(svgNS, 'circle');
+                centerShadow.setAttribute('cx', '0');
+                centerShadow.setAttribute('cy', '1.5');
+                centerShadow.setAttribute('r', '11.5');
+                centerShadow.setAttribute('fill', 'rgba(0,0,0,0.22)');
+                scaleG.appendChild(centerShadow);
+
+                // Papatya altın sarısı göbeği
+                const center = document.createElementNS(svgNS, 'circle');
+                center.setAttribute('cx', '0');
+                center.setAttribute('cy', '0');
+                center.setAttribute('r', '11');
+                center.setAttribute('fill', 'url(#centerGold)');
+                center.setAttribute('stroke', '#fef08a');
+                center.setAttribute('stroke-width', '0.8');
+                scaleG.appendChild(center);
+
+                // Göbek üzerindeki minik polen dokuları
+                const dots = [
+                    { cx: -4, cy: -3 }, { cx: 4, cy: -3 }, { cx: 0, cy: -6 },
+                    { cx: -5, cy: 2 },  { cx: 5, cy: 2 },  { cx: 0, cy: 5 },
+                    { cx: 0, cy: 0 }
+                ];
+                dots.forEach(d => {
+                    const dot = document.createElementNS(svgNS, 'circle');
+                    dot.setAttribute('cx', d.cx);
+                    dot.setAttribute('cy', d.cy);
+                    dot.setAttribute('r', '1.1');
+                    dot.setAttribute('fill', '#fef9c3');
+                    dot.setAttribute('opacity', '0.75');
+                    scaleG.appendChild(dot);
+                });
+
+                animG.appendChild(scaleG);
+                outerG.appendChild(animG);
+                container.appendChild(outerG);
+            });
+        }
+
+        /**
+         * 2. Sayfanın En Üstünden Aşağıya Doğru Yağan Minik Kırmızı Kalpler
+         */
+        function startFallingHearts() {
+            const heartsLayer = document.getElementById('hearts-layer');
+
+            function spawnHeart(initialRandomTop = false) {
+                const heartWrapper = document.createElement('div');
+                heartWrapper.className = 'falling-heart';
+
+                // Minik kırmızı kalp boyutu (10px - 20px arası)
+                const size = 10 + Math.random() * 11;
+                const leftPos = Math.random() * 96 + 2; // %2 ile %98 arası yatay konum
+                const duration = 4.2 + Math.random() * 3.8; // 4.2sn - 8sn arası düşüş hızı
+                const swayMid = (Math.random() - 0.5) * 45;
+                const swayEnd = (Math.random() - 0.5) * 60;
+                const rotMid = (Math.random() - 0.5) * 50;
+                const rotEnd = (Math.random() - 0.5) * 80;
+                const opacity = 0.65 + Math.random() * 0.35;
+
+                // Kırmızı ton çeşitlemesi
+                const reds = ['#ef4444', '#f43f5e', '#e11d48', '#ff2a55', '#dc2626'];
+                const color = reds[Math.floor(Math.random() * reds.length)];
+
+                heartWrapper.style.left = `${leftPos}vw`;
+                heartWrapper.style.setProperty('--fall-duration', `${duration}s`);
+                heartWrapper.style.setProperty('--sway-mid', `${swayMid}px`);
+                heartWrapper.style.setProperty('--sway-end', `${swayEnd}px`);
+                heartWrapper.style.setProperty('--rot-mid', `${rotMid}deg`);
+                heartWrapper.style.setProperty('--rot-end', `${rotEnd}deg`);
+                heartWrapper.style.setProperty('--heart-opacity', opacity);
+
+                if (initialRandomTop) {
+                    heartWrapper.style.animationDelay = `-${Math.random() * duration}s`;
+                }
+
+                heartWrapper.innerHTML = `
+                    <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                `;
+
+                heartsLayer.appendChild(heartWrapper);
+
+                // Animasyon bittiğinde DOM'dan temizle
+                setTimeout(() => {
+                    if (heartWrapper.parentNode) {
+                        heartWrapper.remove();
+                    }
+                }, duration * 1000 + 200);
+            }
+
+            // Açılışta ekranda hemen kalpler görünsün
+            for (let i = 0; i < 18; i++) {
+                spawnHeart(true);
+            }
+
+            // Sürekli yukarıdan aşağıya minik kırmızı kalpler yağdır
+            setInterval(() => {
+                spawnHeart(false);
+            }, 220);
+        }
+
+        /**
+         * 3. Gece Gökyüzü Yıldızlarını Oluşturma
+         */
+        function createNightStars() {
+            const starsLayer = document.getElementById('stars-layer');
+            const starCount = 45;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = 1 + Math.random() * 2.2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 75}%`;
+                star.style.setProperty('--twinkle-duration', `${2 + Math.random() * 3.5}s`);
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                starsLayer.appendChild(star);
+            }
+        }
+
+        /**
+         * 4. Telefonda Dokunulduğunda Ekstra Minik Kalp Saçılma Efekti
+         */
+        function setupTouchInteraction() {
+            window.addEventListener('pointerdown', (e) => {
+                for (let i = 0; i < 6; i++) {
+                    const burst = document.createElement('div');
+                    burst.className = 'touch-burst-heart';
+                    burst.style.left = `${e.clientX}px`;
+                    burst.style.top = `${e.clientY}px`;
+
+                    const angle = (Math.PI * 2 * i) / 6 + (Math.random() - 0.5) * 0.5;
+                    const dist = 30 + Math.random() * 40;
+                    burst.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+                    burst.style.setProperty('--ty', `${Math.sin(angle) * dist - 20}px`);
+                    burst.style.setProperty('--trot', `${(Math.random() - 0.5) * 60}deg`);
+
+                    burst.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f43f5e">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    `;
+                    document.body.appendChild(burst);
+                    setTimeout(() => burst.remove(), 1000);
+                }
+            });
+        }
+
+        window.onload = function () {
+            createNightStars();
+            renderBouquetDaisies();
+            startFallingHearts();
+            setupTouchInteraction();
+        };
+    </script>
+</body>
+</html>
