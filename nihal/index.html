@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1d173d" />
+  <meta name="description" content="Nihal'e Çorum'dan gönderilmiş, altı bölümlük küçük bir sabah sürprizi." />
+  <title>Nihal için ♡ Bir sabah sürprizi</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --dark:#1d173d; --dark2:#30214f; --pink:#ff91bb; --peach:#ffd4a7;
+      --cream:#fffaf2; --lav:#dcd0ff; --dim:#c6b9dc; --outline:#ffffff24;
+      font-family:"Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;min-width:300px;min-height:100vh;color:var(--cream);background:radial-gradient(ellipse at 9% 10%,#523260 0%,transparent 34%),radial-gradient(ellipse at 90% 80%,#443060 0%,transparent 37%),#1d173d;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(#ffffff55 1px,transparent 1px);background-size:37px 37px;opacity:.22;mask-image:linear-gradient(180deg,black,transparent 95%)}
+    button{font:inherit;cursor:pointer;border:0;-webkit-tap-highlight-color:transparent}
+    button:focus-visible{outline:3px solid #fff;outline-offset:5px}
+    button:disabled{cursor:default}
+    .site{width:min(1100px,100%);margin:auto;padding:24px 26px 30px;position:relative}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .identity{display:flex;align-items:center;gap:11px}.identity-mark{width:40px;height:40px;display:grid;place-items:center;background:var(--pink);color:#40203c;border-radius:13px;transform:rotate(-10deg);font-size:25px;font-weight:900;box-shadow:0 4px 0 #a64d7e}
+    .identity small{display:block;letter-spacing:.19em;color:#c7bada;font-size:10px;font-weight:900}.identity b{display:block;font-size:17px;letter-spacing:-.04em}
+    .sound{background:#ffffff10;border:1px solid #ffffff2b;border-radius:100px;color:#e9e1f5;padding:10px 15px;font-weight:800;font-size:12px;white-space:nowrap;transition:background .2s}.sound:hover{background:#ffffff22}
+    .layout{display:grid;grid-template-columns:minmax(245px,310px) minmax(0,1fr);align-items:stretch;gap:24px}
+    .sidebar{display:flex;flex-direction:column;padding:18px 4px 0 1px;min-width:0}
+    .side-kicker{display:inline-block;color:#492641;background:var(--peach);border-radius:30px;padding:8px 13px;letter-spacing:.13em;font-size:10px;font-weight:900;transform:rotate(-2deg);width:max-content;max-width:100%}
+    .side-heading{font-size:clamp(32px,4.8vw,49px);letter-spacing:-.07em;line-height:1.04;margin:17px 0 13px;font-weight:900}
+    .side-heading em{font-style:normal;color:var(--pink)}
+    .side-copy{color:#d3c7e0;font-size:14px;line-height:1.65;margin:0;max-width:270px}
+    .mascot-box{height:206px;position:relative;display:flex;align-items:center;justify-content:center;margin:5px 0 0}
+    .speech{position:absolute;top:16px;right:0;max-width:156px;background:#fffaf1;color:#3a2943;border-radius:17px 17px 17px 3px;padding:11px 13px;line-height:1.35;font-size:12px;font-weight:900;box-shadow:0 5px 0 #f0b7cc;transform:rotate(5deg);z-index:2;transition:transform .2s}
+    .cat{position:absolute;left:15%;bottom:12px;width:134px;height:126px;animation:catFloat 3.1s ease-in-out infinite;filter:drop-shadow(0 16px 9px #0b071651)}
+    .cat-body{position:absolute;bottom:1px;left:21px;width:95px;height:86px;background:#fff1e1;border-radius:48% 48% 40% 42%;box-shadow:inset -14px -9px #e8d1cb}
+    .cat-ear{position:absolute;z-index:2;width:41px;height:54px;background:#fff1e1;top:0;clip-path:polygon(0% 100%,24% 0%,100% 70%)}.cat-ear.left{left:22px;transform:rotate(-8deg)}.cat-ear.right{left:82px;transform:scaleX(-1) rotate(-8deg)}
+    .cat-ear:after{content:"";position:absolute;inset:12px 11px 5px;background:#ff9db8;clip-path:polygon(0 100%,25% 0,100% 70%)}
+    .cat-head{position:absolute;top:27px;left:16px;z-index:3;width:108px;height:81px;background:#fff1e1;border-radius:48% 48% 43% 43%;box-shadow:inset -8px -7px #ecdbd5}
+    .cat-eye{position:absolute;top:32px;width:10px;height:16px;background:#49364a;border-radius:50%}.cat-eye.left{left:27px}.cat-eye.right{right:27px}.cat-eye:after{content:"";position:absolute;top:2px;right:2px;width:3px;height:4px;border-radius:50%;background:#fff}
+    .cat-nose{position:absolute;top:45px;left:50%;transform:translateX(-50%);width:10px;height:7px;border-radius:70% 70% 90% 90%;background:#e5809b}
+    .cat-mouth{position:absolute;top:51px;left:43px;font-weight:900;font-size:16px;line-height:1;color:#a86c7e}
+    .cat-cheek{position:absolute;top:51px;width:18px;height:9px;background:#ffbec8;border-radius:50%;opacity:.8}.cat-cheek.left{left:11px}.cat-cheek.right{right:11px}
+    .cat-tail{position:absolute;left:98px;bottom:8px;width:46px;height:52px;border:14px solid #fff1e1;border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:rotate(45deg)}
+    .quest-heading{font-size:10px;letter-spacing:.23em;color:#b7aac9;font-weight:900;margin:18px 0 12px}
+    .quest-list{display:grid;gap:8px}.quest-item{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:15px;color:#bcb0d0;border:1px solid transparent;font-size:13px;font-weight:800;transition:background .2s,transform .2s}
+    .quest-num{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:#ffffff0b;border:1px solid #ffffff24;font-weight:900;font-size:11px;flex:none}.quest-item.active{background:#ffffff15;color:white;border-color:#ffffff38;transform:translateX(3px)}.quest-item.active .quest-num{background:var(--pink);color:#3e2544;border-color:transparent}.quest-item.done{color:#fbcbe0}.quest-item.done .quest-num{background:#b1efdb;color:#1d5447;border-color:transparent}
+    .location-foot{display:flex;gap:9px;align-items:center;margin-top:auto;padding-top:24px;font-weight:900;font-size:11px;letter-spacing:.09em;color:#bfb0d1}.location-foot .heart{color:#ffa6c7;font-size:19px}
+    .game-device{position:relative;min-width:0;min-height:676px;border:1px solid #ffffff55;border-radius:34px;padding:14px;background:linear-gradient(145deg,#ffffff20,#ffffff0a);box-shadow:0 20px 0 #100b2870,0 38px 80px #0b071b96;overflow:hidden;isolation:isolate}
+    .screen{height:100%;min-height:646px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;position:relative;background:radial-gradient(circle at 50% 0%,#6c528c 0%,#3b285b 47%,#30204e 100%);transition:background 650ms ease}
+    .screen:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.65;background-image:radial-gradient(circle,#ffffffa1 1px,transparent 1.6px);background-size:53px 57px;mask-image:linear-gradient(black,transparent 68%)}
+    .game-device[data-world="energy"] .screen{background:radial-gradient(circle at 50% 3%,#a95c98 0%,#6a3a78 50%,#3e285e)}
+    .game-device[data-world="bubbles"] .screen{background:radial-gradient(circle at 50% 0%,#24768b 0%,#29596f 47%,#28365a 100%)}
+    .game-device[data-world="gifts"] .screen{background:radial-gradient(circle at 50% 0%,#8c6bc0 0%,#63458f 50%,#382855 100%)}
+    .game-device[data-world="travel"] .screen{background:linear-gradient(180deg,#354c84 0%,#9a689f 53%,#ed9d9f 100%)}
+    .game-device[data-world="final"] .screen{background:linear-gradient(170deg,#8e659e 0%,#bd7e9c 47%,#edaa96 100%)}
+    .device-header,.device-footer{z-index:3;position:relative;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:21px 24px;color:#fdf0fa;font-weight:900}
+    .device-header{font-size:10px;letter-spacing:.17em}.status-dot{display:inline-block;vertical-align:middle;width:8px;height:8px;background:#baffdf;box-shadow:0 0 0 4px #baffdf25;border-radius:50%;margin-right:9px}
+    .counter{font-size:16px;letter-spacing:.04em;background:#ffffff21;border:1px solid #ffffff3b;border-radius:30px;padding:8px 12px}.counter small{font-size:11px;color:#ecdcea}
+    .stage{z-index:2;position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px 25px 34px;min-height:540px}
+    .stage.enter{animation:stageEnter .36s ease-out both}
+    .kicker{display:inline-flex;gap:7px;align-items:center;justify-content:center;letter-spacing:.14em;text-transform:uppercase;font-size:10px;color:#ffecf6;background:#ffffff21;border:1px solid #ffffff33;padding:8px 12px;border-radius:30px;font-weight:900;margin-bottom:15px}
+    .stage h2{font-size:clamp(30px,4.6vw,47px);letter-spacing:-.06em;line-height:1.07;margin:0 0 12px;font-weight:900;max-width:520px;text-wrap:balance;text-shadow:0 3px 0 #27163146}
+    .stage .description{font-size:14px;line-height:1.64;color:#fff0f8;max-width:440px;margin:0 auto 18px}
+    .btn-primary{background:linear-gradient(120deg,#ffdec1,#ff9fc8);color:#412943;min-height:54px;padding:12px 27px;border-radius:17px;font-size:13px;font-weight:900;letter-spacing:.03em;box-shadow:0 6px 0 #9e5686,0 12px 20px #26102a5c;transition:transform .15s,box-shadow .15s;max-width:100%;margin:10px auto 0}
+    .btn-primary:hover:not(:disabled){transform:translateY(-3px)}.btn-primary:active:not(:disabled){transform:translateY(4px);box-shadow:0 2px 0 #9e5686,0 4px 8px #26102a5c}.btn-primary:disabled{opacity:.62}
+    .btn-subtle{color:#fff4fc;border:1px solid #ffffff85;background:#ffffff22;padding:13px 21px;border-radius:16px;font-size:13px;font-weight:900;min-height:48px;margin-top:16px}
+    .device-footer{padding:15px 24px 18px;font-size:10px;color:#ffe3f2;letter-spacing:.09em;border-top:1px solid #ffffff18}.segments{display:flex;gap:5px;flex:1;max-width:170px}.segments span{height:6px;border-radius:20px;flex:1;background:#ffffff30}.segments span.done{background:#ffe6b4}.segments span.current{background:#ff9bc4}
+    .effects{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:9}.particle{position:absolute;top:-30px;font-size:19px;animation:confettiFall 2.8s linear forwards;user-select:none}.sparkle{position:absolute;font-size:24px;animation:flashUp .8s ease-out forwards;pointer-events:none}
+    .mail-scene{height:238px;width:min(100%,400px);position:relative;display:flex;justify-content:center;align-items:center;margin:5px 0 13px}.mail-scene:before{content:"";position:absolute;width:285px;height:195px;border:1px dashed #ffffff77;border-radius:50%;transform:rotate(-13deg)}
+    .orbit-star{position:absolute;font-size:30px;color:#ffe7b3;animation:starPulse 2s infinite}.orbit-star.s1{top:11px;left:16%}.orbit-star.s2{right:14%;top:22px;font-size:19px;animation-delay:.7s}.orbit-star.s3{right:13%;bottom:26px;font-size:26px;animation-delay:1.3s}
+    .envelope-button{border:0;background:none;display:flex;align-items:center;flex-direction:column;gap:12px;position:relative;z-index:2;padding:0 5px;color:#ffeaf6;font-size:12px;font-weight:900;letter-spacing:.03em}.envelope{position:relative;width:250px;height:166px;border-radius:11px;filter:drop-shadow(0 17px 13px #1c102b80);transform:rotate(-6deg);transition:transform .5s}.envelope-button:hover .envelope{transform:rotate(-3deg) translateY(-5px)}.envelope-back{position:absolute;inset:0;background:#ffc4ce;border-radius:11px;box-shadow:inset 0 0 0 2px #ffedf0}
+    .envelope-letter{position:absolute;z-index:1;left:27px;right:27px;top:10px;height:135px;border-radius:9px;background:repeating-linear-gradient(180deg,#fff9ed 0px,#fff9ed 24px,#eadad8 25px,#fff9ed 26px);border:4px solid #fff;border-bottom:0;display:grid;place-items:start center;padding-top:21px;color:#d96b91;font-size:32px;transition:transform .7s ease}.envelope-front{position:absolute;z-index:3;inset:0;border-radius:0 0 11px 11px;clip-path:polygon(0 18%,50% 67%,100% 18%,100% 100%,0 100%);background:linear-gradient(160deg,#ffe2d9 0%,#ff97b6 100%)}
+    .envelope-flap{position:absolute;z-index:4;inset:0;clip-path:polygon(0 0,100% 0,50% 62%);background:#ffd7db;transform-origin:50% 0%;transition:transform .65s, z-index .2s}.envelope-wax{position:absolute;z-index:5;top:86px;left:103px;width:45px;height:45px;border-radius:50%;background:#d65c88;border:3px solid #efa0b6;display:grid;place-items:center;color:#fff;font-size:25px;box-shadow:0 3px 0 #a73c69;transition:opacity .3s}
+    .envelope-button.open .envelope-flap{transform:rotateX(175deg);z-index:0}.envelope-button.open .envelope-letter{transform:translateY(-82px)}.envelope-button.open .envelope-wax{opacity:0}.envelope-button.open .envelope{transform:rotate(0deg)}
+    .letter-card{width:min(100%,435px);background:#fff8ec;color:#503348;border-radius:6px 25px 21px 21px;box-shadow:0 9px 0 #b66891,0 19px 30px #25143155;padding:25px 23px 22px;transform:rotate(-1deg);margin:12px auto 14px;position:relative}.letter-card:before{content:"♥";position:absolute;right:17px;top:12px;font-size:25px;color:#e98eb1;transform:rotate(12deg)}.letter-card .letter-head{font-size:11px;letter-spacing:.17em;color:#b56e89;font-weight:900;text-align:left}.letter-card .letter-message{text-align:left;font-size:15px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere;margin:22px 0 8px;font-weight:750}.letter-card .letter-sign{text-align:right;font-size:12px;font-weight:900;color:#c2718e}
+    .energy-visual{width:100%;max-width:380px;margin:10px auto 0;position:relative}.energy-bar{height:18px;border:2px solid #ffffff99;padding:3px;border-radius:50px;background:#39264d70;box-shadow:inset 0 3px 9px #23173266}.energy-fill{height:100%;width:0;background:linear-gradient(90deg,#ffefb3,#ff96bb);border-radius:35px;transition:width .18s}.energy-percent{font-weight:900;font-size:38px;letter-spacing:-.05em;margin:5px 0 0}.energy-label{font-size:12px;color:#ffecf6;min-height:22px;font-weight:800}.heart-pad{position:relative;width:200px;height:200px;margin:13px auto 6px;display:grid;place-items:center}.heart-pad:before,.heart-pad:after{content:"";position:absolute;inset:6px;border:2px dashed #ffd9eb77;border-radius:50%;animation:spin 17s linear infinite}.heart-pad:after{inset:24px;border-color:#ffd9eb55;animation-direction:reverse}.heart-button{position:relative;z-index:2;border:0;background:transparent;font-size:106px;line-height:1;filter:drop-shadow(0 12px 0 #5d335e88);transition:transform .12s}.heart-icon{display:block;animation:heartbeat 1.5s ease-in-out infinite}.heart-button:active .heart-icon{transform:scale(.82)}.heart-button:disabled{filter:drop-shadow(0 12px 0 #5d335e88)}.pop-counter{position:absolute;z-index:5;color:white;font-size:20px;font-weight:900;pointer-events:none;animation:popScore .75s both}
+    .stress-field{width:100%;max-width:475px;border-radius:24px;padding:17px 12px;min-height:256px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,1fr);gap:15px 9px;align-items:center;justify-items:center;background:radial-gradient(circle at 50% 60%,#ffffff15,#112b4149);border:2px dashed #ffffff60;margin:7px 0 12px;overflow:hidden}.stress-bubble{width:min(100%,102px);aspect-ratio:1/1;border-radius:50%;color:#144653;padding:9px 5px;font-weight:900;font-size:clamp(10px,1.4vw,12px);line-height:1.25;word-break:break-word;background:radial-gradient(circle at 30% 22%,#fff 0%,#eaffff 13%,#93e6e5 40%,#38a8c5 100%);border:2px solid #d6ffff;box-shadow:inset -9px -13px 17px #146b8e80,0 10px 12px #142c5266;transition:filter .2s}.stress-bubble:hover:not(:disabled){filter:brightness(1.12)}.stress-bubble.popped{animation:burst .26s ease-in forwards;pointer-events:none}.remaining{font-size:12px;font-weight:900;color:#d7fff8;letter-spacing:.12em;margin-top:0}.win-banner{grid-column:1/-1;align-self:center;background:#ecfff6;color:#185354;font-weight:900;font-size:18px;padding:20px;border-radius:20px;line-height:1.55;box-shadow:0 6px 0 #51b9b0}
+    .gift-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;width:100%;max-width:440px;margin:21px 0}.gift-card{position:relative;min-height:184px;padding:15px 4px;border-radius:20px;border:2px solid #ffffff66;background:#ffffff19;box-shadow:0 8px 0 #42255a77;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:13px;overflow:hidden;transition:transform .23s,background .23s}.gift-card:before{content:"";width:14px;background:#ffffff35;position:absolute;inset:0 auto 0 50%;transform:translateX(-50%)}.gift-card:after{content:"";height:14px;background:#ffffff35;position:absolute;inset:46% 0 auto}.gift-card:hover{transform:translateY(-8px) rotate(2deg);background:#ffffff32}.gift-emoji{z-index:2;font-size:64px;filter:drop-shadow(0 8px 5px #30204470);animation:giftSway 3s ease-in-out infinite}.gift-card:nth-child(2) .gift-emoji{animation-delay:-1s}.gift-card:nth-child(3) .gift-emoji{animation-delay:-2s}.gift-card strong{z-index:2;font-size:11px;letter-spacing:.11em;color:white;background:#49285d95;padding:7px 9px;border-radius:50px}.gift-reveal{font-size:80px;animation:giftPop .6s both;margin:9px 0 13px}
+    .whatsapp-hello{display:inline-flex;justify-content:center;align-items:center;gap:9px;width:min(100%,380px);min-height:51px;margin:12px auto 0;padding:11px 17px;border:1px solid #abffcc;border-radius:16px;background:linear-gradient(145deg,#dcffeb,#bffbd7);color:#14563b;text-decoration:none;font-size:12px;font-weight:900;line-height:1.35;box-shadow:0 5px 0 #459d78,0 9px 16px #25132c44;transition:transform .2s,box-shadow .2s}.whatsapp-hello:hover{transform:translateY(-2px)}.whatsapp-hello:active{transform:translateY(3px);box-shadow:0 2px 0 #459d78}.whatsapp-hello:focus-visible{outline:3px solid white;outline-offset:5px}
+    .gift-reveal{position:relative;width:min(100%,390px);height:262px;display:grid;place-items:center;margin:5px auto 0;isolation:isolate}.gift-reveal:before{content:"";position:absolute;width:225px;height:225px;border-radius:50%;background:radial-gradient(circle,#ffffff35 0%,#ffffff17 44%,transparent 69%);z-index:-1;animation:starPulse 4s ease-in-out infinite}.gift-caption{font-weight:900;font-size:12px;letter-spacing:.08em;color:#fff1f8;margin:0 auto 4px}.flower-svg{height:255px;width:240px;max-width:100%;overflow:visible;animation:flowerGrow .9s cubic-bezier(.2,1.3,.3,1) both}.flower-bloom{transform-origin:120px 110px;animation:flowerSway 3.5s ease-in-out infinite alternate}.flower-leaf{transform-origin:116px 185px;animation:leafSway 3.8s ease-in-out infinite}.gift-star{position:absolute;color:#fff4c2;font-size:28px;animation:starPulse 2s infinite}.gift-star.star-left{left:13%;top:17%}.gift-star.star-right{right:13%;top:28%;animation-delay:.6s}.falling-petal{position:absolute;font-size:22px;animation:petalDrift 4.5s ease-in-out infinite;top:20%;right:22%}.falling-petal.petal-two{top:39%;left:18%;right:auto;animation-delay:1.5s;color:#ffd2e9}.heart-surprise .giant-heart{font-size:160px;line-height:1;filter:drop-shadow(0 11px 8px #4b1a5b80);animation:bigHeartbeat 1.15s ease-in-out infinite}.heart-halo{position:absolute;width:188px;height:188px;border:3px solid #ffe4f1bb;border-radius:50%;animation:haloRing 2.4s ease-out infinite}.heart-halo.halo-two{animation-delay:1.2s}.mini-heart{position:absolute;font-size:30px;color:#ffe7ef;animation:heartOrbit 3s ease-in-out infinite}.mini-heart.heart-one{left:9%;top:12%}.mini-heart.heart-two{right:12%;top:22%;animation-delay:1s}.mini-heart.heart-three{left:24%;bottom:11%;animation-delay:2s}.bear-svg{height:247px;width:260px;max-width:95%;overflow:visible;filter:drop-shadow(0 10px 6px #39204566);animation:bearBob 2.5s ease-in-out infinite}.bear-paw{transform-box:fill-box;transform-origin:center 23%;animation:pawWave .9s ease-in-out infinite alternate}.kiss-fly{position:absolute;font-size:31px;left:62%;top:38%;pointer-events:none;animation:kissFly 2.8s cubic-bezier(.3,.2,.4,1) infinite;opacity:0}.kiss-fly.kiss-two{animation-delay:.95s;font-size:28px}.kiss-fly.kiss-three{animation-delay:1.9s;font-size:24px}
+    @keyframes flowerGrow{0%{transform:translateY(80px) scale(.25);opacity:0}75%{transform:translateY(-8px) scale(1.06);opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}@keyframes flowerSway{0%{transform:rotate(-4deg)}100%{transform:rotate(4deg)}}@keyframes leafSway{50%{transform:rotate(5deg)}}@keyframes petalDrift{0%,100%{transform:translate(0,0) rotate(-10deg);opacity:.5}50%{transform:translate(-13px,23px) rotate(20deg);opacity:1}}@keyframes bigHeartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.15)}27%{transform:scale(1.04)}40%{transform:scale(1.2)}55%{transform:scale(1)}}@keyframes haloRing{0%{transform:scale(.65);opacity:.9}100%{transform:scale(1.55);opacity:0}}@keyframes heartOrbit{50%{transform:translateY(-22px) rotate(20deg) scale(1.2)}}@keyframes bearBob{50%{transform:translateY(-7px) rotate(2deg)}}@keyframes pawWave{0%{transform:rotate(-10deg)}100%{transform:rotate(28deg)}}@keyframes kissFly{0%{transform:translate(0,11px) scale(.3) rotate(-12deg);opacity:0}17%{opacity:1}68%{opacity:1}100%{transform:translate(83px,-88px) scale(1.25) rotate(25deg);opacity:0}}
+    .route-card{width:100%;max-width:490px;border-radius:26px;border:1px solid #ffffff72;background:linear-gradient(180deg,#ffffff16,#ffffff0b);padding:10px 14px 18px;margin:8px 0 15px;box-shadow:inset 0 1px #ffffff4a}.route-svg{width:100%;height:auto;display:block;overflow:visible}.city-row{display:flex;justify-content:space-between;gap:10px;margin-top:-6px;font-size:12px;font-weight:900}.city-label{background:#ffffff22;border:1px solid #ffffff45;padding:8px 10px;border-radius:20px}.travel-progress{font-size:12px;font-weight:900;color:#fff7da;min-height:23px;margin:0}.travel-heart{filter:drop-shadow(0 6px 2px #c63c7e55)}
+    .trophy{position:relative;width:192px;height:178px;display:grid;place-items:center;margin:8px auto 10px}.trophy:before{content:"";width:168px;height:168px;position:absolute;border:2px dashed #fff5dc9a;border-radius:50%;animation:spin 25s linear infinite}.trophy:after{content:"✦";position:absolute;font-size:40px;color:#ffe4a8;right:4px;top:-13px;animation:starPulse 2s infinite}.trophy-center{font-size:95px;animation:catFloat 2.6s infinite;filter:drop-shadow(0 11px 0 #65426775)}
+    .certificate{background:#fffaf0;color:#55354c;border-radius:12px;padding:13px 26px;border:2px dashed #eabbc3;transform:rotate(-2deg);font-size:12px;font-weight:900;letter-spacing:.08em;margin:9px 0 13px;box-shadow:0 5px 0 #bc769a}.final-card{width:min(100%,445px);border-radius:22px;background:#fff8ef;color:#57344c;padding:23px 22px;margin:15px auto;box-shadow:0 8px 0 #a85d87}.final-card h3{font-size:23px;letter-spacing:-.04em;margin:5px 0 14px}.final-card .secret-text{font-size:15px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;font-weight:750}.final-card .initial{width:55px;height:55px;border-radius:50%;background:#ffc6d8;color:#b5497a;display:grid;place-items:center;margin:0 auto 6px;font-size:32px}
+    .small-hint{font-size:11px;color:#ffe2f2;margin-top:12px;font-weight:800}
+    .site-footer{text-align:center;font-size:11px;color:#a99ab9;margin:40px auto 0;letter-spacing:.07em}
+    @keyframes catFloat{50%{transform:translateY(-8px) rotate(3deg)}}@keyframes stageEnter{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}@keyframes heartbeat{50%{transform:scale(1.1)}}@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes burst{to{opacity:0;transform:scale(1.55) rotate(20deg)}}@keyframes giftSway{50%{transform:rotate(-7deg)}}@keyframes giftPop{0%{transform:scale(.2) rotate(-20deg);opacity:0}70%{transform:scale(1.25) rotate(7deg)}100%{transform:scale(1);opacity:1}}@keyframes starPulse{50%{opacity:.4;transform:scale(.72) rotate(12deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes popScore{to{transform:translateY(-80px) rotate(9deg);opacity:0}}@keyframes confettiFall{to{transform:translateY(800px) rotate(720deg);opacity:0}}@keyframes flashUp{to{transform:translateY(-85px) scale(1.5);opacity:0}}
+    @media(max-width:880px){.layout{grid-template-columns:225px minmax(0,1fr);gap:16px}.side-heading{font-size:35px}.site{padding:20px 18px 30px}.game-device{min-height:650px}.screen{min-height:620px}.stage{padding:13px 18px 26px;min-height:520px}.gift-card{min-height:159px}.gift-emoji{font-size:53px}}
+    @media(max-width:670px){.site{padding:16px 12px 24px}.masthead{margin-bottom:14px;padding:0 4px}.layout{display:block}.sidebar{display:block;padding:3px 7px 17px}.side-kicker{font-size:9px}.side-heading{font-size:33px;margin:11px 0 7px}.side-copy{font-size:12px;max-width:none}.mascot-box,.quest-heading,.quest-list,.location-foot{display:none}.game-device{min-height:auto;padding:9px;border-radius:26px;box-shadow:0 13px 0 #100b2870,0 20px 40px #0b071b76}.screen{min-height:585px;border-radius:19px}.stage{min-height:490px;padding:10px 17px 24px}.stage h2{font-size:clamp(29px,8vw,39px)}.device-header{padding:16px 17px;font-size:9px}.device-footer{padding:12px 17px 16px}.description{font-size:13px}.stress-field{min-height:247px;gap:10px 6px}.gift-grid{gap:8px}.gift-card{min-height:150px}.gift-emoji{font-size:48px}.location-foot{display:none}.site-footer{margin:30px auto 0}}
+    @media(max-width:360px){.identity b{font-size:14px}.sound{font-size:10px;padding:9px 10px}.stage{padding:10px 10px 20px}.stage h2{font-size:28px}.stress-field{padding:11px 6px;min-height:220px}.gift-card{min-height:135px}.gift-emoji{font-size:42px}.heart-surprise .giant-heart{font-size:122px}.gift-reveal{height:226px}.flower-svg{height:219px}.bear-svg{height:217px}.envelope{width:227px;height:151px}.envelope-wax{left:92px;top:79px}.mail-scene{height:210px}.letter-card{padding:18px 16px}.heart-pad{height:180px;width:180px}.stage .description{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="masthead">
+      <div class="identity"><span class="identity-mark" aria-hidden="true">♥</span><div><small>ÇORUM'DAN ANKARA'YA</small><b>bir sabah sürprizi</b></div></div>
+      <button type="button" class="sound" id="soundToggle" aria-pressed="false" aria-label="Oyun seslerini aç">♫ Ses kapalı</button>
+    </header>
+    <main class="layout">
+      <aside class="sidebar" aria-label="Oyun hakkında">
+        <span class="side-kicker">SADECE NİHAL İÇİN ✦</span>
+        <h1 class="side-heading">Küçük bir <em>gülümseme</em> görevi.</h1>
+        <p class="side-copy">Günaydın Nihal! Sana altı küçük görev bırakılmış. Hepsini tamamlarsan son sürpriz açılacak. 💗</p>
+        <div class="mascot-box" aria-hidden="true">
+          <span class="speech" id="mascotSpeech">Psst! İlk paketi açıyor muyuz? 👀</span>
+          <div class="cat"><span class="cat-tail"></span><span class="cat-body"></span><span class="cat-ear left"></span><span class="cat-ear right"></span><span class="cat-head"><span class="cat-eye left"></span><span class="cat-eye right"></span><span class="cat-nose"></span><span class="cat-mouth">ᴗ</span><span class="cat-cheek left"></span><span class="cat-cheek right"></span></span></div>
+        </div>
+        <div class="quest-heading">GÖREV HARİTASI · 6 AŞAMA</div>
+        <div id="questList" class="quest-list" aria-label="Görev listesi"></div>
+        <div class="location-foot">📍 ÇORUM <span class="heart">♥</span> ANKARA 📍</div>
+      </aside>
+      <section class="game-device" id="device" data-world="intro" aria-label="Nihal'in mini oyunu">
+        <div class="screen">
+          <div class="device-header"><span><span class="status-dot"></span>GÜLÜMSEME MODU</span><span class="counter"><span id="counter">01</span> <small>/ 06</small></span></div>
+          <div id="stage" class="stage" aria-live="polite" aria-atomic="true"></div>
+          <div class="device-footer"><div class="segments" id="segments" aria-label="Oyun ilerlemesi"></div><span id="footerLabel">GÖREV 01 / 06</span></div>
+        </div>
+        <div class="effects" id="effects" aria-hidden="true"></div>
+      </section>
+    </main>
+    <footer class="site-footer">Made with ♡ in Çorum · Yalnızca Nihal'e özel</footer>
+  </div>
+
+  <script>
+  /* ==============================================================
+     AMİL, NİHAL'E YAZACAĞIN MESAJLARI SADECE BURADAN DEĞİŞTİR.
+     Tırnak işaretlerini silme. Satır atlamak için \n kullanabilirsin.
+     6. GÖREV OLARAK ESKİ ÇİÇEK BAHÇESİ TAMAMEN KALDIRILDI.
+     =============================================================== */
+  const MESAJLAR = {
+    gunaydin: 'Günaydın çiçeğim',
+    mesafe: 'aramızda kilometreler olabilir ancak kalbim ve aklım sende haberin ola',
+    final: 'bu hafta senin için yoğun olacağını biliyorum ve gece gece aklımda olduğun için böyle birşey hazırlamak istedim aman ha heyecan panik stres yapmıyosun :)'
+  };
+
+  const chapters = [
+    {label:'Gizli teslimat', emoji:'💌', world:'intro', hint:'Paket seni bekliyor! 📬'},
+    {label:'Moral şarjı', emoji:'⚡', world:'energy', hint:'Kalbe bas, güç topla! 💗'},
+    {label:'Stres avcısı', emoji:'🎯', world:'bubbles', hint:'Şu balonları patlat! 😼'},
+    {label:'Şans kutuları', emoji:'🎁', world:'gifts', hint:'Sen hangisini seçerdin? 🎁'},
+    {label:'Kalp yolculuğu', emoji:'🚀', world:'travel', hint:'Kargo biraz heyecanlı! 💌'},
+    {label:'Gizli final', emoji:'🔐', world:'final', hint:'Son sürprize geldik! 🥹'}
+  ];
+
+  const stage = document.getElementById('stage');
+  const device = document.getElementById('device');
+  const effects = document.getElementById('effects');
+  const questList = document.getElementById('questList');
+  const counter = document.getElementById('counter');
+  const segments = document.getElementById('segments');
+  const footerLabel = document.getElementById('footerLabel');
+  const mascotSpeech = document.getElementById('mascotSpeech');
+  const soundToggle = document.getElementById('soundToggle');
+
+  let level = 0;
+  let soundOn = false;
+  let audioContext = null;
+  let timers = [];
+  let flightFrame = null;
+  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const later = (fn,ms) => { const timer = setTimeout(fn,ms); timers.push(timer); return timer; };
+  function stopAsync(){timers.forEach(clearTimeout);timers=[];if(flightFrame!==null){cancelAnimationFrame(flightFrame);flightFrame=null;}}
+  function sfx(kind='tap'){
+    if(!soundOn)return;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if(!AudioCtx)return;
+      if(!audioContext)audioContext=new AudioCtx();
+      if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
+      const notes = kind==='win'?[659,784,988]:kind==='pop'?[440,330]:[630];
+      notes.forEach((hz,index)=>{
+        const osc=audioContext.createOscillator();const gain=audioContext.createGain();
+        const start=audioContext.currentTime+index*.085;
+        osc.type='sine';osc.frequency.setValueAtTime(hz,start);
+        osc.frequency.exponentialRampToValueAtTime(hz*.88,start+.14);
+        gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(.075,start+.018);gain.gain.exponentialRampToValueAtTime(.0001,start+.19);
+        osc.connect(gain);gain.connect(audioContext.destination);osc.start(start);osc.stop(start+.21);
+      });
+    }catch(e){/* Ses isteğe bağlı; oyun sessiz de çalışır. */}
+  }
+  soundToggle.addEventListener('click',()=>{
+    soundOn=!soundOn;soundToggle.textContent=soundOn?'♫ Ses açık':'♫ Ses kapalı';
+    soundToggle.setAttribute('aria-pressed',String(soundOn));soundToggle.setAttribute('aria-label',soundOn?'Oyun seslerini kapat':'Oyun seslerini aç');
+    if(soundOn)sfx('tap');
+  });
+  function btn(selector,handler){const element=stage.querySelector(selector);if(element)element.addEventListener('click',handler);return element;}
+  function addButton(text,handler,extraClass='btn-primary'){
+    const b=document.createElement('button');b.type='button';b.className=extraClass;b.textContent=text;b.addEventListener('click',handler);stage.appendChild(b);return b;
+  }
+  function placeMessage(container,text){
+    const box=document.createElement('div');box.className='letter-card';
+    const head=document.createElement('div');head.className='letter-head';head.textContent='ÖZEL NOT · NİHAL’E';
+    const paragraph=document.createElement('p');paragraph.className='letter-message';paragraph.textContent=text;
+    const sign=document.createElement('div');sign.className='letter-sign';sign.textContent='— Amil ♡';
+    box.append(head,paragraph,sign);container.append(box);return box;
+  }
+  function addSpark(x,y,symbol='✦'){
+    const e=document.createElement('span');e.className='sparkle';e.textContent=symbol;e.style.left=x+'px';e.style.top=y+'px';effects.append(e);later(()=>e.remove(),850);
+  }
+  function celebrate(amount=32){
+    const bits=['♥','✦','✧','★','♡','✿'];
+    for(let i=0;i<amount;i++){
+      const el=document.createElement('span');el.className='particle';el.textContent=bits[i%bits.length];el.style.left=(3+Math.random()*94)+'%';el.style.color=['#ffdba9','#ffc0dc','#fff7ed','#c6f9df'][i%4];
+      el.style.animationDelay=(Math.random()*.5)+'s';el.style.animationDuration=(2.1+Math.random()*.8)+'s';effects.append(el);later(()=>el.remove(),3400);
+    }
+  }
+  function updateHUD(){
+    counter.textContent=String(level+1).padStart(2,'0');footerLabel.textContent='GÖREV '+String(level+1).padStart(2,'0')+' / 06';
+    device.dataset.world=chapters[level].world;mascotSpeech.textContent=chapters[level].hint;
+    segments.replaceChildren();questList.replaceChildren();
+    chapters.forEach((ch,i)=>{
+      const seg=document.createElement('span');seg.className=i<level?'done':i===level?'current':'';segments.append(seg);
+      const row=document.createElement('div');row.className='quest-item '+(i<level?'done':i===level?'active':'');
+      if(i===level)row.setAttribute('aria-current','step');
+      const num=document.createElement('span');num.className='quest-num';num.textContent=i<level?'✓':String(i+1).padStart(2,'0');
+      const label=document.createElement('span');label.textContent=ch.emoji+'  '+ch.label;row.append(num,label);questList.append(row);
+    });
+  }
+  function render(){
+    stopAsync();effects.replaceChildren();updateHUD();
+    stage.classList.remove('enter');stage.replaceChildren();void stage.offsetWidth;stage.classList.add('enter');
+    [intro,energy,bubbles,gifts,travel,finale][level]();
+  }
+  function advance(){if(level<chapters.length-1){level++;render();sfx('tap')}}
+  function kicker(text){return '<span class="kicker">✦ '+text+'</span>';}
+
+  function intro(){
+    stage.innerHTML = `${kicker('GÖREV 01 · POSTA KUTUSU')}
+      <h2>Nihal, sana bir şey gelmiş! 💌</h2>
+      <p class="description">Çorum'dan Ankara'ya bir gönderi var. Alıcının adı doğruysa zarfı açabilirsin.</p>
+      <div class="mail-scene">
+        <span class="orbit-star s1" aria-hidden="true">✦</span><span class="orbit-star s2" aria-hidden="true">✧</span><span class="orbit-star s3" aria-hidden="true">✶</span>
+        <button type="button" class="envelope-button" id="openMail" aria-label="Nihal'e gelen zarfı aç">
+          <span class="envelope"><span class="envelope-back"></span><span class="envelope-letter">N ♡</span><span class="envelope-front"></span><span class="envelope-flap"></span><span class="envelope-wax">♥</span></span>
+          <span>AÇMAK İÇİN DOKUN ↑</span>
+        </button>
+      </div>
+      <span class="small-hint">ALICI: NİHAL · GÖNDEREN: AMİL</span>`;
+    btn('#openMail',()=>{
+      const envelope=stage.querySelector('#openMail');if(envelope.disabled)return;
+      envelope.disabled=true;envelope.classList.add('open');sfx('win');
+      later(()=>{
+        stage.innerHTML=kicker('GÖREV 01 · TESLİMAT TAMAM')+'<h2>Günaydın, Nihal! ☀️</h2><p class="description">Zarfın içinden bir not çıktı...</p>';
+        placeMessage(stage,MESAJLAR.gunaydin);
+        addButton('İLK GÖREVE GEÇ →',advance);
+        const whatsapp=document.createElement('a');
+        whatsapp.className='whatsapp-hello';
+        whatsapp.href='https://wa.me/905416067957?text='+encodeURIComponent('Günaydın Amil ☀️💗');
+        whatsapp.target='_blank';
+        whatsapp.rel='noopener noreferrer';
+        whatsapp.textContent='💬 Sen de günaydın mesajı göndermek ister misin?';
+        whatsapp.setAttribute('aria-label','WhatsApp üzerinden Amil’e günaydın mesajı yaz');
+        stage.appendChild(whatsapp);
+        celebrate(18);
+      },reducedMotion?70:760);
+    });
+  }
+
+  function energy(){
+    stage.innerHTML=`${kicker('GÖREV 02 · MORAL İSTASYONU')}
+      <h2>Biraz enerji toplayalım! ⚡</h2>
+      <p class="description">Kalbe 8 kere dokun. Her dokunuşta moral barın dolacak.</p>
+      <div class="energy-visual"><div class="energy-bar" role="progressbar" aria-label="Moral seviyesi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="energyBar"><div class="energy-fill" id="energyFill"></div></div><div class="energy-percent" id="energyPct">%0</div><div class="energy-label" id="energyLabel">Başlamak için kalbe dokun ✨</div></div>
+      <div class="heart-pad" id="heartPad"><button type="button" class="heart-button" id="heartButton" aria-label="Moral seviyesini artır"><span class="heart-icon">💗</span></button></div>
+      <span class="small-hint" id="energyHint">0 / 8 DOKUNUŞ</span>`;
+    let hits=0;
+    btn('#heartButton',()=>{
+      if(hits>=8)return;hits++;sfx('tap');
+      const percentage=Math.round(hits/8*100);
+      stage.querySelector('#energyFill').style.width=percentage+'%';stage.querySelector('#energyPct').textContent='%'+percentage;
+      stage.querySelector('#energyBar').setAttribute('aria-valuenow',percentage);
+      stage.querySelector('#energyHint').textContent=hits+' / 8 DOKUNUŞ';
+      const status=hits<=2?'Uyanma modu aktif... 🥱':hits<=5?'Güzel gidiyorsun, devam! ✨':hits<8?'Az kaldı, az kaldı! 🚀':'NİHAL MODU AKTİF! 🎉';
+      stage.querySelector('#energyLabel').textContent=status;
+      const pad=stage.querySelector('#heartPad');const bubble=document.createElement('span');bubble.className='pop-counter';bubble.textContent='+12.5';bubble.style.left=(35+Math.random()*40)+'%';bubble.style.top=(10+Math.random()*45)+'%';pad.append(bubble);later(()=>bubble.remove(),760);
+      const rect=pad.getBoundingClientRect();const parent=effects.getBoundingClientRect();addSpark(rect.left-parent.left+rect.width*.6,rect.top-parent.top+rect.height*.4,'♥');
+      if(hits===8){stage.querySelector('#heartButton').disabled=true;celebrate(27);sfx('win');addButton('SIRADAKİ GÖREV →',advance)}
+    });
+  }
+
+  function bubbles(){
+    stage.innerHTML=`${kicker('GÖREV 03 · STRES AVCISI')}
+      <h2>Stresi patlat! 🎈</h2>
+      <p class="description">6 tane stres balonu kaçmadan hepsini patlat. Parmağını hazırla!</p>
+      <p class="remaining" id="remaining">KALAN BALON: 6</p>
+      <div class="stress-field" id="stressField"></div>`;
+    const field=stage.querySelector('#stressField');const words=['STRES','PANİK','ZOR SORU','UYKUSUZLUK','HEYECAN','YA OLMAZSA?'];let left=6;
+    words.forEach(word=>{
+      const b=document.createElement('button');b.type='button';b.className='stress-bubble';b.textContent=word;b.setAttribute('aria-label',word+' balonunu patlat');field.append(b);
+      b.addEventListener('click',()=>{
+        if(b.disabled)return;b.disabled=true;b.classList.add('popped');sfx('pop');left--;stage.querySelector('#remaining').textContent='KALAN BALON: '+left;
+        later(()=>b.remove(),260);
+        if(left===0){stage.querySelector('#remaining').textContent='STRES SEVİYESİ: SIFIR ✓';celebrate(38);sfx('win');later(()=>{field.replaceChildren();const win=document.createElement('div');win.className='win-banner';win.textContent='✨ Temizlik tamam!\nBütün stresler patladı.';field.append(win);addButton('ŞANS KUTULARINA GEÇ →',advance)},310)}
+      });
+    });
+  }
+
+  function gifts(){
+    const opened=new Set();
+    const variants={
+      1:{title:'Bir çiçek! 🌷',label:'Çiçeğin açıyor',visual:`
+        <div class="gift-reveal flower-surprise" role="img" aria-label="Yaprakları açılan pembe bir çiçek animasyonu">
+          <span class="gift-star star-left">✦</span><span class="gift-star star-right">✧</span>
+          <svg class="flower-svg" viewBox="0 0 240 265" aria-hidden="true">
+            <defs>
+              <linearGradient id="flowerPetal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe3f0"/><stop offset=".58" stop-color="#ff8fb6"/><stop offset="1" stop-color="#e15a91"/></linearGradient>
+              <linearGradient id="flowerStem" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a1edaa"/><stop offset="1" stop-color="#348d67"/></linearGradient>
+            </defs>
+            <ellipse cx="120" cy="243" rx="62" ry="9" fill="#311c5070"/>
+            <path d="M120 229 Q109 178 120 109" fill="none" stroke="url(#flowerStem)" stroke-width="11" stroke-linecap="round"/>
+            <path class="flower-leaf leaf-left" d="M116 185 Q59 133 45 184 Q73 219 116 185Z" fill="#5dcc8c" stroke="#a6e5aa" stroke-width="3"/>
+            <path class="flower-leaf leaf-right" d="M116 205 Q188 158 188 195 Q162 230 116 205Z" fill="#60c795" stroke="#a6e5aa" stroke-width="3"/>
+            <g class="flower-bloom">
+              <ellipse cx="120" cy="62" rx="30" ry="52" fill="url(#flowerPetal)"/>
+              <ellipse cx="89" cy="88" rx="30" ry="47" fill="#ff9ec4" transform="rotate(-48 89 88)"/>
+              <ellipse cx="151" cy="88" rx="30" ry="47" fill="#ff9ec4" transform="rotate(48 151 88)"/>
+              <ellipse cx="99" cy="118" rx="29" ry="44" fill="#fa78aa" transform="rotate(-72 99 118)"/>
+              <ellipse cx="141" cy="118" rx="29" ry="44" fill="#fa78aa" transform="rotate(72 141 118)"/>
+              <circle cx="120" cy="100" r="24" fill="#ffe3a3" stroke="#fff3c3" stroke-width="5"/>
+              <circle cx="112" cy="95" r="3.5" fill="#b9755f"/><circle cx="129" cy="95" r="3.5" fill="#b9755f"/>
+              <path d="M112 108 Q120 114 129 108" stroke="#b9755f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <span class="falling-petal petal-one">🌸</span><span class="falling-petal petal-two">✿</span>
+        </div>`},
+      2:{title:'Kocaman bir kalp! 💗',label:'Kocaman kalp',visual:`
+        <div class="gift-reveal heart-surprise" role="img" aria-label="Kocaman atıp duran pembe kalp animasyonu">
+          <span class="heart-halo"></span><span class="heart-halo halo-two"></span>
+          <span class="giant-heart">💗</span>
+          <span class="mini-heart heart-one">♥</span><span class="mini-heart heart-two">♥</span><span class="mini-heart heart-three">♥</span>
+        </div>`},
+      3:{title:'Ayıcık sana öpücük yolluyor! 🧸',label:'Öpücük yollayan ayıcık',visual:`
+        <div class="gift-reveal bear-surprise" role="img" aria-label="El sallayıp kalpli öpücükler gönderen sevimli ayı animasyonu">
+          <svg class="bear-svg" viewBox="0 0 260 240" aria-hidden="true">
+            <ellipse cx="130" cy="226" rx="76" ry="9" fill="#3e285566"/>
+            <circle cx="70" cy="74" r="36" fill="#c88e63" stroke="#ffe1b5" stroke-width="4"/>
+            <circle cx="190" cy="74" r="36" fill="#c88e63" stroke="#ffe1b5" stroke-width="4"/>
+            <circle cx="70" cy="74" r="19" fill="#f4a5ad"/>
+            <circle cx="190" cy="74" r="19" fill="#f4a5ad"/>
+            <ellipse cx="130" cy="185" rx="79" ry="53" fill="#ca926c" stroke="#ffe1b5" stroke-width="4"/>
+            <ellipse cx="130" cy="186" rx="46" ry="37" fill="#f9e1be"/>
+            <circle cx="130" cy="110" r="79" fill="#dba77a" stroke="#ffe4be" stroke-width="4"/>
+            <ellipse cx="101" cy="110" rx="6" ry="9" fill="#3d2b33"/><ellipse cx="159" cy="110" rx="6" ry="9" fill="#3d2b33"/>
+            <circle cx="103" cy="107" r="2.3" fill="white"/><circle cx="161" cy="107" r="2.3" fill="white"/>
+            <ellipse cx="82" cy="132" rx="16" ry="8" fill="#f99eaf" opacity=".85"/><ellipse cx="178" cy="132" rx="16" ry="8" fill="#f99eaf" opacity=".85"/>
+            <ellipse cx="130" cy="144" rx="34" ry="26" fill="#f9e4c6"/>
+            <path d="M120 135 Q130 128 140 135 Q139 144 130 148 Q121 144 120 135Z" fill="#6c3b42"/>
+            <path d="M130 148 Q121 164 113 150 M130 148 Q139 164 147 150" fill="none" stroke="#6c3b42" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="70" cy="192" rx="26" ry="23" fill="#dba77a" stroke="#ffe4be" stroke-width="4"/>
+            <g class="bear-paw"><ellipse cx="190" cy="180" rx="27" ry="30" fill="#dba77a" stroke="#ffe4be" stroke-width="4"/><ellipse cx="190" cy="183" rx="15" ry="14" fill="#efbaa8"/><circle cx="178" cy="166" r="5" fill="#efbaa8"/><circle cx="190" cy="161" r="5" fill="#efbaa8"/><circle cx="202" cy="166" r="5" fill="#efbaa8"/></g>
+          </svg>
+          <span class="kiss-fly kiss-one">💋</span><span class="kiss-fly kiss-two">💕</span><span class="kiss-fly kiss-three">💗</span>
+        </div>`}
+    };
+    function showChoices(){
+      stage.innerHTML=`${kicker('GÖREV 04 · ŞANS ODASI')}
+        <h2>Üç minik sürpriz 🎁</h2>
+        <p class="description">Üç kutunun da içinde ayrı bir şey var. İstersen hepsini açabilirsin.</p>
+        <div class="gift-grid" id="giftGrid">
+          <button type="button" class="gift-card" data-gift="1" aria-label="Birinci sürpriz kutusunu aç"><span class="gift-emoji">🎁</span><strong>KUTU 01 ${opened.has(1)?'✓':''}</strong></button>
+          <button type="button" class="gift-card" data-gift="2" aria-label="İkinci sürpriz kutusunu aç"><span class="gift-emoji">💝</span><strong>KUTU 02 ${opened.has(2)?'✓':''}</strong></button>
+          <button type="button" class="gift-card" data-gift="3" aria-label="Üçüncü sürpriz kutusunu aç"><span class="gift-emoji">🎀</span><strong>KUTU 03 ${opened.has(3)?'✓':''}</strong></button>
+        </div><span class="small-hint">AÇILAN KUTU: ${opened.size} / 3</span>`;
+      stage.querySelectorAll('[data-gift]').forEach(gift=>gift.addEventListener('click',()=>openGift(Number(gift.dataset.gift))));
+      if(opened.size>0)addButton('KALP KARGOSUNA GEÇ →',advance);
+    }
+    function openGift(index){
+      if(!variants[index])return;
+      opened.add(index);
+      const selected=variants[index];
+      stage.innerHTML=kicker('GÖREV 04 · KUTU '+String(index).padStart(2,'0'))+
+        '<h2>'+selected.title+'</h2>'+selected.visual+
+        '<p class="gift-caption">'+selected.label+'</p>';
+      addButton(opened.size===3?'ÜÇÜNÜ DE AÇTIN! DEVAM ET →':'BAŞKA KUTU AÇ 🎁',opened.size===3?advance:showChoices);
+      if(opened.size<3)addButton('KALP KARGOSUNA GEÇ →',advance,'btn-subtle');
+      celebrate(30);sfx('win');
+    }
+    showChoices();
+  }
+
+  function travel(){
+    stage.innerHTML=`${kicker('GÖREV 05 · KALP KARGOSU')}
+      <h2>Çorum → Ankara 💗</h2>
+      <p class="description">Ufak bir kargo yola çıkmaya hazır. Gönder butonuna bas, yerine ulaşsın.</p>
+      <div class="route-card">
+        <svg class="route-svg" viewBox="0 0 520 212" role="img" aria-label="Çorum ve Ankara arasında sembolik bir kalp yolculuğu">
+          <defs><linearGradient id="flightGradient" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffe8b3"/><stop offset="1" stop-color="#ffcee5"/></linearGradient></defs>
+          <circle cx="60" cy="146" r="42" fill="#ffffff16"/><circle cx="460" cy="146" r="42" fill="#ffffff16"/>
+          <path d="M60 146 Q260 -8 460 146" id="flightPath" fill="none" stroke="url(#flightGradient)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 12"/>
+          <g aria-hidden="true" fill="#ffebc7"><path d="M60 108 l8 24 24 8 -24 8 -8 24 -8 -24 -24 -8 24 -8z" transform="translate(0 6) scale(.7) translate(25 58)"/><path d="M460 108 l8 24 24 8 -24 8 -8 24 -8 -24 -24 -8 24 -8z" transform="translate(135 8) scale(.7) translate(0 58)"/></g>
+          <circle cx="60" cy="146" r="14" fill="#ffeec7" stroke="#fff" stroke-width="4"/>
+          <circle cx="460" cy="146" r="14" fill="#ffeec7" stroke="#fff" stroke-width="4"/>
+          <g id="traveler" class="travel-heart" transform="translate(60 146)"><path d="M0 20 C-45 -7 -19 -35 0 -18 C19 -35 45 -7 0 20Z" fill="#ff719e" stroke="#fff7ec" stroke-width="3" transform="scale(.75)"/></g>
+          <text x="260" y="199" text-anchor="middle" fill="#fff4f7" opacity=".78" font-size="14" font-weight="800">♡ SİMGESEL YOLCULUK ♡</text>
+        </svg>
+        <div class="city-row"><span class="city-label">📍 ÇORUM</span><span class="city-label">ANKARA 📍</span></div>
+      </div>
+      <div class="travel-progress" id="travelStatus" role="status">KARGO HAZIR • 0%</div>
+      <button type="button" class="btn-primary" id="sendHeart">KALBİ GÖNDER 💌</button>`;
+    btn('#sendHeart',()=>{
+      const button=stage.querySelector('#sendHeart');if(button.disabled)return;button.disabled=true;button.textContent='YOLDA... 💗';sfx('tap');
+      const route=stage.querySelector('#flightPath'),heart=stage.querySelector('#traveler'),status=stage.querySelector('#travelStatus');
+      const length=route.getTotalLength();
+      const complete=()=>{
+        heart.setAttribute('transform','translate(460 146)');status.textContent='TESLİMAT BAŞARILI ✓ 100%';sfx('win');celebrate(37);
+        later(()=>{button.remove();placeMessage(stage,MESAJLAR.mesafe);addButton('SON SÜRPRİZE GEÇ →',advance)},480);
+      };
+      if(reducedMotion){complete();return;}
+      const started=performance.now();
+      function tick(now){
+        const ratio=Math.min(1,(now-started)/2550),eased=ratio<.5?2*ratio*ratio:1-Math.pow(-2*ratio+2,2)/2;
+        const point=route.getPointAtLength(length*eased);heart.setAttribute('transform',`translate(${point.x} ${point.y})`);
+        status.textContent='KARGO YOLDA • '+Math.round(ratio*100)+'%';
+        if(ratio<1){flightFrame=requestAnimationFrame(tick)}else{flightFrame=null;complete()}
+      }
+      flightFrame=requestAnimationFrame(tick);
+    });
+  }
+
+  function finale(){
+    stage.innerHTML=`${kicker('GÖREV 06 · BÜYÜK FİNAL')}
+      <h2>Görevler tamam! 🏆</h2>
+      <p class="description">Tebrikler Nihal, bütün aşamaları geçtin. Ama son bir küçük not kaldı...</p>
+      <div class="trophy" aria-hidden="true"><span class="trophy-center">🏆</span></div>
+      <div class="certificate">NİHAL · GÜLÜMSEME USTASI ✦</div>
+      <button type="button" id="revealFinal" class="btn-primary">🔐 GİZLİ NOTU AÇ</button>
+      <span class="small-hint">YALNIZCA NİHAL TARAFINDAN AÇILABİLİR 💌</span>`;
+    celebrate(28);
+    btn('#revealFinal',()=>{
+      sfx('win');stage.innerHTML=kicker('SADECE NİHAL’E · AMİL’DEN')+'<h2>Bu sonuncusu sana özel. 💗</h2>';
+      const card=document.createElement('div');card.className='final-card';
+      const icon=document.createElement('span');icon.className='initial';icon.textContent='♡';
+      const heading=document.createElement('h3');heading.textContent='Küçük bir not...';
+      const content=document.createElement('p');content.className='secret-text';content.textContent=MESAJLAR.final;
+      card.append(icon,heading,content);stage.append(card);
+      addButton('BAŞTAN OYNA ↻',()=>{level=0;render();sfx('tap')},'btn-subtle');celebrate(64);
+    });
+  }
+
+  render();
+  </script>
+</body>
+</html>
